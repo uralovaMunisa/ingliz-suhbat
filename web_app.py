@@ -24,7 +24,7 @@ rate_limiter = RateLimiter(config.RATE_LIMIT_COUNT, config.RATE_LIMIT_WINDOW_SEC
 # Ensure DB initialized
 asyncio.run(db.init_db())
 
-FRONTEND_DIST = root_dir / "frontend" / "dist"
+FRONTEND_DIST = root_dir / "dist" if (root_dir / "dist").exists() else (root_dir / "frontend" / "dist")
 
 
 class EmmaRequestHandler(BaseHTTPRequestHandler):
